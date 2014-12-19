@@ -1,4 +1,4 @@
-<div class='q'>
+<div class='restaurant'>
   <h1><%= @restaurant.name %></h1>
 
   <p><%= @restaurant.address %></p>
@@ -6,6 +6,12 @@
   <p><%= @restaurant.state %></p>
   <p><%= @restaurant.zip_code %></p>
   <p><%= @restaurant.description %></p>
+  <h4>Reviews</h4>
+  <% @reviews.each  do |review| %>
+    <h5> <%= review.rating %> </h5>
+    <p> <%= review.body %></p>
+  <% end %>
 </div>
-
-<%= link_to("Back to Home", restaurants_path)  %>
+<div class="button">
+  <%= link_to "Review this Restaurant", new_restaurant_review_path(@restaurant) %>
+</div>
