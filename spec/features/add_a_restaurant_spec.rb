@@ -31,4 +31,27 @@ feature "user adds a restaurant ", %q{
     expect(page).to have_content restaurant.name
   end
 
+  scenario "user adds a new restaurant without a description" do
+    attrs = {
+      name: 'Nautilus',
+      address: 'Camebridge Street',
+      city: 'Nantucket',
+      state: 'MA',
+      zip_code: '02554',
+    }
+
+    restaurant = Restaurant.new(attrs)
+
+    visit '/restaurants/new'
+    fill_in 'restaurant_name', with: restaurant.name
+    fill_in 'restaurant_address', with: restaurant.address
+    fill_in 'restaurant_city', with: restaurant.city
+    fill_in 'restaurant_state', with: restaurant.state
+    fill_in 'restaurant_zip_code', with: restaurant.zip_code
+    click_on 'Create Restaurant'
+    expect(page).to have_content 'Restaurant was successfully created.'
+
+    expect(page).to have_content restaurant.name
+  end
+
 end
