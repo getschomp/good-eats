@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GoodEats</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="header">
+    <h1> goodEats</h1>
+  </div>
+
+  <div class="button">
+    <%= link_to("Post a Restaurant", new_restaurant_path)  %>
+    <%= link_to("Back to Home", restaurants_path)  %>
+  </div>
+
+<%= yield %>
+
+</body>
+</html>
